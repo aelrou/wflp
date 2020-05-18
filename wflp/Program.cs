@@ -34,7 +34,7 @@ namespace wflp {
 
             if (args == null | args.Length < 1) {
                 Console.WriteLine(@"Usage: wflp.exe ""C:\Working\Directory""");
-                Console.WriteLine(@"Please specify the working directory for configuration files.");
+                Console.WriteLine(@"Please specify the working directory for creating configuration files.");
                 Console.ReadKey();
                 Environment.Exit(1);
             }
