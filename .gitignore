@@ -1,0 +1,12 @@
+*.json
+*.log
+*.old
+.vs
+packages
+wflp/bin
+wflp/obj
+wflp/Properties
+App.config
+packages.config
+wflp.csproj.user
+wflp.csproj
