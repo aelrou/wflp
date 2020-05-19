@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EnvVar.cs" />
+    <Compile Include="methods\Permission.cs" />
+    <Compile Include="methods\WorkDir.cs" />
+    <Compile Include="models\EnvVar.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

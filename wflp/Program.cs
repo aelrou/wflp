@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
+using wflp.methods;
 
 namespace wflp {
     class Program {
@@ -32,28 +33,20 @@ namespace wflp {
         static void Main(string[] args) {
             DateTime startTime = DateTime.Now;
 
-            if (args == null | args.Length < 1) {
-                Console.WriteLine(@"Usage: wflp.exe ""C:\Working\Directory""");
-                Console.WriteLine(@"Please specify the working directory for creating configuration files.");
+            if (Permission.Elevated() == false) {
                 Console.ReadKey();
                 Environment.Exit(1);
             }
-            if (args.Length != 1) {
-                Console.WriteLine(@"Only 1 parameter allowed. Found " + args.Length);
-                Console.ReadKey();
-                Environment.Exit(1);
-            }
-            string workingDirectory = args[0];
-            if (!(Directory.Exists(workingDirectory))) {
-                Console.WriteLine(@"Cannot access working directory " + workingDirectory);
+            
+            if (WorkDir.Find(args) == false) {
                 Console.ReadKey();
                 Environment.Exit(1);
             }
 
             EnvVar environmentVariables;
-            string jsonEnvironmentFile = workingDirectory + @"\environment.json";
+            string jsonEnvironmentFile = args[0] + @"\environment.json";
             if (!(File.Exists(jsonEnvironmentFile))) {
-                Console.WriteLine(@"Cannot access configuration file " + jsonEnvironmentFile);
+                Console.WriteLine(@"Cannot find configuration file " + jsonEnvironmentFile);
                 environmentVariables = new EnvVar(true);
                 string JSONresult = JsonConvert.SerializeObject(environmentVariables, Formatting.Indented);
                 using (var tw = new StreamWriter(jsonEnvironmentFile, false)) {
@@ -71,14 +64,14 @@ namespace wflp {
 
             string firewallData = environmentVariables.DataDirectory + @"\" + environmentVariables.DataFile;
             if (!(File.Exists(firewallData))) {
-                Console.WriteLine(@"Cannot access firewall data file " + firewallData);
+                Console.WriteLine(@"Cannot find firewall data file " + firewallData);
                 Console.ReadKey();
                 Environment.Exit(1);
             }
 
             string firewallOldData = environmentVariables.DataDirectory + @"\" + environmentVariables.OldDataFile;
             if (!(File.Exists(firewallOldData))) {
-                Console.WriteLine(@"Cannot access firewall old data file " + firewallOldData);
+                Console.WriteLine(@"Cannot find firewall old data file " + firewallOldData);
                 Console.ReadKey();
                 Environment.Exit(1);
             }

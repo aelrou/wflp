@@ -1,6 +1,6 @@
 ﻿namespace wflp
 {
-    class EnvVar
+    public class EnvVar
     {
         public string DataDirectory;
         public string DataFile;
