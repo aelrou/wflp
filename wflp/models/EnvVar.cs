@@ -1,4 +1,4 @@
-﻿namespace wflp
+﻿namespace wflp.Models
 {
     public class EnvVar
     {

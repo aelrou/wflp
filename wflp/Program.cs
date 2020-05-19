@@ -3,7 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
-using wflp.methods;
+using wflp.Methods;
+using wflp.Models;
 
 namespace wflp {
     class Program {

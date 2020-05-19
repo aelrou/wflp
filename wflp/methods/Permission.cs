@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace wflp.methods {
+namespace wflp.Methods {
     public class Permission {
         public static bool Elevated() {
             System.Diagnostics.Process process = new System.Diagnostics.Process();
