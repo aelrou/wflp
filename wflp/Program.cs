@@ -44,8 +44,13 @@ namespace wflp {
                 Environment.Exit(1);
             }
 
+            EventLogEntryCollection_Item2.DoIt();
+
+            Console.ReadKey();
+            Environment.Exit(0);
+
             EnvVar environmentVariables;
-            string jsonEnvironmentFile = args[0] + @"\environment.json";
+            string jsonEnvironmentFile = args[0] + @"\config.json";
             if (!(File.Exists(jsonEnvironmentFile))) {
                 Console.WriteLine(@"Cannot find configuration file " + jsonEnvironmentFile);
                 environmentVariables = new EnvVar(true);
